@@ -38,7 +38,7 @@ if(preg_match('/^\/([Ss]tart)/',$text)){
 $start_time = round(microtime(true) * 1000);
       $send=  bot('sendmessage', [
                 'chat_id' => $chat_id,
-                'text' =>"Tezlik:",
+                'text' =>"Teezlik:",
             ])->result->message_id;
         
                     $end_time = round(microtime(true) * 1000);
