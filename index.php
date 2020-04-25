@@ -2,7 +2,7 @@
 /**
  *Author: Tilon
  *
- *Telegram : @Mobile_legends_bang_ban
+ *Telegram : @TILON
  */
 $API_KEY = '1042872271:AAHcXmndL-BRcvFeeYxv29VvrdAMB7jn0po';
 ##------------------------------##
@@ -33,12 +33,22 @@ $message = $update->message;
 $from_id = $message->from->id;
 $chat_id = $message->chat->id;
 $text = $message->text;
+$key = json_encode([
+'resize_keyboard'=>true,
+'keyboard'=>[
+[['text'=>"🌐 Internet paketlar"],['text'=>"#⃣ USSD kodlar"]],
+[['text'=>"🛄 Tarif rejalari"],['text'=>"🗂 Xizmatlar"]],
+[['text'=>"🧭 Daqiqa to'plamlar"],['text'=>"📨 SMS to'plamlar"]],[['text'=>"🗞Reklama berish"]]
+]
+]);
+
 //====================ᵗᶦᵏᵃᵖᵖ======================//
 if(preg_match('/^\/([Ss]tart)/',$text)){
 $start_time = round(microtime(true) * 1000);
       $send=  bot('sendmessage', [
                 'chat_id' => $chat_id,
-                'text' =>"Teezlik",
+                'text' =>"Tezlik:",
+                'reply_markup'=>$key,
             ])->result->message_id;
         
                     $end_time = round(microtime(true) * 1000);
@@ -46,7 +56,9 @@ $start_time = round(microtime(true) * 1000);
                     bot('editMessagetext',[
                         "chat_id" => $chat_id,
                         "message_id" => $send,
-                        "text" => "Teezlik" . $time_taken . "ms",
+                        "text" => "Tezlik:" . $time_taken . "ms",
                     ]);
 }
+
+
 ?>
