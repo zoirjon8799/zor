@@ -2,7 +2,7 @@
 /* Ushbu kod @Intelcore tomonidan yozildi  */
 
 $admin = '846828502'; // Admin ID
-$token = '1042872271:AAHcXmndL-BRcvFeeYxv29VvrdAMB7jn0po';  //Bot token
+$token = '1218335123:AAE-mfTxmgRsQ66t99mTSlopQOXYi6DOtFQ';  //Bot token
 
 function bot($method,$datas=[]){
 global $token;
