@@ -1,8 +1,8 @@
 <?php
 /* Ushbu kod @Intelcore tomonidan yozildi  */
 $madmin = '846828502'; // Admin ID
-$admin = '732918719'; // Admin ID
-$token = '1218335123:AAE-mfTxmgRsQ66t99mTSlopQOXYi6DOtFQ';  //Bot token
+$admin = '846828502'; // Admin ID
+$token = '1034606032:AAF8U3XIbEwt4i7YeWExlarHkMaX_tYbcJY';  //Bot token
 
 function bot($method,$datas=[]){
 global $token;
@@ -18,7 +18,9 @@ var_dump(curl_error($ch));
 return json_decode($res);
 }
 }
-
+$data = $update->callback_query->data;
+$chat_id2 = $update->callback_query->message->chat->id;
+$message_id2 = $update->callback_query->message->message_id;
 $update = json_decode(file_get_contents('php://input'));
 $message = $update->message;
 $mid = $message->message_id;
@@ -31,7 +33,14 @@ $name = $message->from->first_name;
 $UzWebDev = file_get_contents("data/$from_id/ali.txt");
 $to =  file_get_contents("data/$from_id/token.txt");
 $url =  file_get_contents("data/$from_id/url.txt");
-
+$u = explode("\n",file_get_contents("memb.txt"));
+$c = count($u)-1;
+$modxe = file_get_contents("usr.txt");
+$data = $update->callback_query->data;
+$chat_id2 = $update->callback_query->message->chat->id;
+$message_id2 = $update->callback_query->message->message_id;
+mkdir("data/$chat_id");
+$ieoooo = file_get_contents("data/$chat_id/ieoooo.txt");
 $key = json_encode([
 'resize_keyboard'=>true,
 'keyboard'=>[
@@ -406,6 +415,14 @@ bot('sendmessage',[
 'parse_mode'=>'markdown',
 'reply_markup'=>$key,
 ]);
+}
+if($text=="⬅️ Orqaga"){
+bot('sendmessage',[
+'chat_id'=>$cid,
+'text'=>" *O'zingizga kerakli bo'limni tanlang* ",
+'parse_mode'=>'markdown',
+'reply_markup'=>$key,
+]);
 }}
 
 
@@ -471,19 +488,40 @@ bot('sendmessage',[
 ])
 ]);
 }
-##@UzWebDev dan Ramazon oyi uchun sovg'a##
-if($text=="/start"){
+##core
+if($text=="📶 Internet paketlar"){
 file_put_contents("data/$from_id/ali.txt", '1');
 bot('sendmessage',[
 'chat_id'=>$cid,
-'text'=>"Botni ishlatish uchun pastdagi knopkani bosing👇",
+'text'=>"Tanlang:",
 'parse_mode'=>'html',
 'reply_markup'=>json_encode([
 'resize_keyboard'=>false,
 'resize_keyboard'=>true,
 'keyboard'=>[
-[['text'=>"🔑 Botdan foydalanish 🔑"]],
+[['text'=>"🔸Oylik paketlar"],['text'=>"🔸Kunlik paketlar"]],
+[['text'=>"🔸Tungi internet"],['text'=>"🔸Internet non-stop"]],
+[['text'=>"⬅️ Orqaga"]]
 
+]
+])
+]);
+}
+##core
+if($text=="🔸Oylik paketlar"){
+file_put_contents("data/$from_id/ali.txt", '1');
+bot('sendmessage',[
+'chat_id'=>$cid,
+'text'=>"Tanlang:",
+'parse_mode'=>'html',
+'reply_markup'=>json_encode([
+'resize_keyboard'=>false,
+'resize_keyboard'=>true,
+'keyboard'=>[
+[['text'=>"❇️ 500MB"],['text'=>"❇️ 1500MB"],
+['text'=>"❇️ 3000MB"]],[['text'=>"❇️ 5000MB"],['text'=>"❇️ 8000MB"],['text'=>"❇️ 12000MB"]],[['text'=>"❇ 20000MB"],
+['text'=>"❇️ 30000MB"],['text'=>"❇️ 50000MB"]],[['text'=>"❇️ 75000MB"],
+['text'=>"⬅️ Orqaga"]]
 
 ]
 ])
@@ -506,10 +544,30 @@ bot('sendmessage',[
 ]
 ])
 ]);
+}
+##Intel##
+if($text=="/start"){
+file_put_contents("data/$from_id/ali.txt", '1');
+bot('sendmessage',[
+'chat_id'=>$cid,
+'text'=>"Botni ishlatish uchun pastdagi knopkani bosing👇",
+'parse_mode'=>'html',
+'reply_markup'=>json_encode([
+'resize_keyboard'=>false,
+'resize_keyboard'=>true,
+'keyboard'=>[
+[['text'=>"🔑 Botdan foydalanish 🔑"]],
+
+
+]
+])
+]);
+if ($update && !in_array($chat_id, $u)) {
+    file_put_contents("memb.txt", $chat_id."\n",FILE_APPEND);
 
 }
 ##INTEL
-if($text=="🔸Oylik paketlar"){
+if($text=="🔸Kunlik paketlar"){
 file_put_contents("data/$from_id/ali.txt", '1');
 bot('sendmessage',[
 'chat_id'=>$cid,
@@ -519,24 +577,19 @@ bot('sendmessage',[
 'resize_keyboard'=>false,
 'resize_keyboard'=>true,
 'keyboard'=>[
-[['text'=>"❇️ 500MB"],['text'=>"❇️ 1500MB"],
-['text'=>"❇️ 3000MB"]],[['text'=>"❇️ 5000MB"],['text'=>"❇️ 8000MB"],['text'=>"❇️ 12000MB"]],[['text'=>"❇ 20000MB"],
-['text'=>"❇️ 30000MB"],['text'=>"❇️ 50000MB"]],[['text'=>"❇️ 75000MB"],
+[['text'=>"❇️ 100MB"],['text'=>"❇️ 300MB"]],[['text'=>"❇️ 600MB"],
 ['text'=>"⬅️ Orqaga"]]
 
 ]
 ])
 ]);
-
-
-
 }
-##INTEL
+##Intel##
 if($text=="📶 Internet paketlar"){
 file_put_contents("data/$from_id/ali.txt", '1');
 bot('sendmessage',[
 'chat_id'=>$cid,
-'text'=>"Tanlang:",
+'text'=>"Botni ishlatish uchun pastdagi knopkani bosing👇",
 'parse_mode'=>'html',
 'reply_markup'=>json_encode([
 'resize_keyboard'=>false,
@@ -546,9 +599,16 @@ bot('sendmessage',[
 [['text'=>"🔸Tungi internet"],['text'=>"🔸Internet non-stop"]],
 [['text'=>"⬅️ Orqaga"]]
 
+
 ]
 ])
 ]);
+
+
+
+
+
+
 
 
 }
@@ -630,30 +690,82 @@ bot('sendmessage',[
 'text'=>"📊Bot foydalanuvchilari soni $lich ta.",
 'parse_mode'=>"html"
 ]);
+
 }
-if(mb_stripos($text,"$text") !== false){
-  bot('sendmesaвфыфыge',[
-    'reply_to_message_id'=>$mid,
-    'chat_id'=>$cid,
-    'text'=>"Xabaringiz <a href='tg://user?id=$admin'>#King</a> ga yetkazildi!",
-    'parse_mode'=>'html'
-  ]);
-  bot('sendmeфывфssage',[
-    'chat_id'=>$madmin,
-    'text'=>"
-
-Ботда янги хабар 
-
-👉Ism: [$name](tg://user?id=$uid)
-
-
-
-
-          $text",
-   'parse_mode'=>'markdown'
-  ]);
 }
 
+if ($text == "/admin" and $cid == $admin ) {
+    bot('sendMessage',[
+        'chat_id'=>$cid,
+      'text'=>"
+Salom xurmatli Admin
+Buyruqlardan birini tanlang",
+'parse_mode'=>"MarkDown",
+'disable_web_page_preview'=>true,
+        'reply_markup'=>json_encode([
+            'inline_keyboard'=>[
+[['text'=>'📩Xammaga habar yuborish','callback_data'=>'ce']],
+[['text'=>'👥Bot azolari','callback_data'=>'co']],
+            ]
+            ])
+        ]);
+}
+if($data == 'off'){
+bot('editMessageText',[
+'chat_id'=>$cid,
+'message_id'=>$update->callback_query->message->chat->id,
+    'message_id'=>$update->callback_query->message->message_id,
+      'text'=>"
+Salom xurmatli Admin
+Buyruqlardan birini tanlang",
+'parse_mode'=>"MarkDown",
+'disable_web_page_preview'=>true,
+        'reply_markup'=>json_encode([
+            'inline_keyboard'=>[
+[['text'=>'📩Xammaga habar yuborish','callback_data'=>'ce']],
+[['text'=>'👥Bot azolari','callback_data'=>'co']],
+            ]
+            ])
+]);
+file_put_contents('usr.txt', '');
+}
+
+if($data == "co" and $update->callback_query->message->chat->id == $admin ){ 
+    bot('answercallbackquery',[
+        'callback_query_id'=>$update->callback_query->id,
+        'text'=>"
+       Bot azolari 📢 : [ $c ] ta .
+        ",
+        'show_alert'=>true,
+]);
+}
+
+if($data == "ce" and $update->callback_query->message->chat->id == $admin){ 
+    file_put_contents("usr.txt","yas");
+    bot('EditMessageText',[
+    'chat_id'=>$update->callback_query->message->chat->id,
+    'message_id'=>$update->callback_query->message->message_id,
+    'text'=>"Habaringizni yozing va u  [ $c ] ta azoga yuboriladi . 
+   ",
+    'reply_markup'=>json_encode([
+        'inline_keyboard'=>[
+[['text'=>'Otmen 🚫','callback_data'=>'off']]    
+        ]
+    ])
+    ]);
+}
+if($text and $modxe == "yas" and $cid == $admin ){
+    for ($i=0; $i < count($u); $i++) { 
+        bot('sendMessage',[
+          'chat_id'=>$u[$i],
+          'text'=>"$text",
+'parse_mode'=>"MarkDown",
+'disable_web_page_preview'=>true,
+
+]);
+    file_put_contents("usr.txt","no");  
+}
+}
 
 
 
